@@ -1,0 +1,282 @@
+/* 기본 리셋 및 폰트 설정 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #f0f4f8;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* 컨테이너 */
+.container {
+  max-width: 900px;
+  margin: 5px auto;
+  padding: 20px;
+  padding-top: 10px;
+}
+
+/* --- [변경] 헤더 레이아웃 (Mobile First) --- */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+  padding: 10px 0;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #2c3e50;
+}
+
+/* 헤더 오른쪽 그룹 (검색창 + 최근 검색어) */
+.header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* 검색창 */
+.search-box {
+  position: relative;
+  display: flex;
+  gap: 8px; /* 간격 조정 */
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 5px;
+  z-index: 100;
+}
+
+#cityInput {
+  flex-grow: 1; /* 남은 공간 채우기 */
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+}
+
+#searchBtn, #currentLocationBtn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  white-space: nowrap; /* 줄바꿈 방지 */
+  transition: background-color 0.3s;
+}
+
+#searchBtn:hover, #currentLocationBtn:hover {
+  background-color: #2980b9;
+}
+
+/* 최근 검색어 */
+.recent-searches {
+  position: absolute; /* 공중에 띄움 */
+  top: 110%;          /* 검색창 바로 아래 위치 */
+  left: 0;
+  width: 100%;        /* 검색창 너비와 똑같이 */
+  
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* 그림자 진하게 */
+  padding: 10px;
+  
+  display: flex;
+  flex-direction: column; /* 세로로 나열 */
+  gap: 5px;
+  z-index: 101;
+}
+
+/* 숨김 처리용 클래스 (JS에서 사용) */
+.recent-searches.hidden {
+  display: none;
+}
+
+.recent-searches button {
+  background: none;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  text-align: left; /* 글자 왼쪽 정렬 */
+  font-size: 0.95rem;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 100%; /* 가로 꽉 차게 */
+}
+
+.recent-searches button:hover {
+  background-color: #f1f3f5; /* 마우스 올리면 회색 */
+  color: #3498db; /* 글자색 파랑 */
+}
+
+/* 오늘 날짜 (오타 수정: .data-text -> .date-text, #666) */
+.date-text {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+/* 날씨 카드 (현재, 예보 공통) */
+.weather-card,
+.forecast-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 25px;
+  margin-bottom: 20px;
+}
+
+/* 현재 날씨 */
+.current-weather {
+  text-align: center;
+}
+
+.weather-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+#currentTemp {
+  font-size: 4rem;
+  font-weight: 300;
+  margin-left: 10px;
+}
+
+.unit-btn {
+  font-size: 1rem;
+  font-weight: bold;
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px 8px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+#weatherDesc {
+  font-size: 1.25rem;
+  color: #555;
+  text-transform: capitalize;
+  margin-bottom: 15px;
+}
+
+.weather-details {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  color: #555;
+}
+
+/* 5일 예보 */
+.forecast-section h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.forecast-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+}
+
+.forecast-card {
+  text-align: center;
+  padding: 15px;
+}
+
+.forecast-card .temp {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+/* 오류 메시지 */
+.error-message {
+  text-align: center;
+  color: #e74c3c;
+  background: #fbeaea;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* --- [추가] 아이콘 디자인 업그레이드 --- */
+
+/* 현재 날씨 아이콘 */
+#weatherIcon {
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+  margin-right: 15px;
+  /* 아이콘 선명하게 */
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2));
+}
+
+/* 5일 예보 아이콘 */
+.forecast-card img {
+  width: 70px;
+  height: 70px;
+  margin: 5px auto;
+  display: block;
+  /* 아이콘 선명하게 */
+  filter: drop-shadow(1px 2px 3px rgba(0,0,0,0.1));
+}
+
+/* 옷차림 추천! */
+.outfit-box {
+    background-color: #e3f2fd; /* 부드러운 하늘색 배경 */
+    color: #1565c0;            /* 진한 파란색 글씨 */
+    padding: 12px 20px;
+    border-radius: 20px;       /* 둥글둥글하게 */
+    margin: 15px auto;         /* 위아래 간격 */
+    display: inline-block;     /* 글자 크기에 맞게 박스 조절 */
+    font-size: 0.95rem;
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.outfit-icon {
+    margin-right: 8px;
+    font-size: 1.2rem;
+}
+
+/* --- [추가] PC 화면 (가로 768px 이상) 레이아웃 --- */
+@media (min-width: 768px) {
+  header {
+    flex-direction: row; /* 가로 배치 */
+    justify-content: space-between; /* 양 끝 정렬 */
+    align-items: flex-start;
+  }
+
+  .header-right {
+    align-items: flex-end; /* 오른쪽 정렬 */
+    width: auto;
+  }
+
+  .search-box {
+    width: 300px; /* 크기 고정 */
+    margin-bottom: 5px;
+  }
+  
+  .recent-searches {
+    justify-content: flex-end;
+  }
+}

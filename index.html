@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>나만의 날씨예보 웹사이트</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1 class="logo">나만의 날씨예보</h1>
+
+      <div class="header-right">
+        <div class="search-box">
+          <input type="text" id="cityInput" placeholder="도시 이름 (영어)...">
+          <button id="searchBtn">검색</button>
+          <button id="currentLocationBtn" title="내 위치 날씨 보기">내 위치 날씨 보기</button>
+          <div id="recentSearches" class="recent-searches hidden"></div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div id="errorDisplay" class="error-message hidden"></div>
+
+      <section id="currentWeather" class="weather-card current-weather hidden">
+        <p id="currentDate" class="date-text"></p>
+        <h2 id="cityName"></h2>
+        <div class="weather-main">
+          <img id="weatherIcon" src="" alt="날씨 아이콘">
+          <span id="currentTemp"></span>
+          <button id="unitToggleBtn" class="unit-btn">°F</button>
+        </div>
+        <p id="weatherDesc"></p>
+
+        <div id="outfitBox" class="outfit-box">
+          <span class="outfit-icon">👕</span>
+          <span id="outfitText">날씨 정보를 불러오는 중...</span>
+        </div>
+
+        <div class="weather-details">
+          <p>습도: <span id="humidity"></span>%</p>
+          <p>풍속: <span id="windSpeed"></span> m/s</p>
+        </div>
+      </section>
+
+      <section id="forecast" class="forecast-section hidden">
+        <h3>5일간 날씨 예보</h3>
+        <div id="forecastContainer" class="forecast-container">
+          </div>
+      </section>
+    </main>
+  </div>
+
+</body>
+</html>
